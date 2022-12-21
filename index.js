@@ -92,7 +92,15 @@ const stepThroughCell = (row, column) => {
     if (grid[nextRow][nextColumn]) {
       continue;
     }
+
+    // Remove a wall from either horizontals or verticals
+    if (direction === "left") {
+      verticals[row][column - 1] = true;
+    } else if (direction === "right") {
+      verticals[row][column] = true;
+    }
   }
+  // visit the next cell
 };
 
 stepThroughCell(startRow, startColumn);
