@@ -1,6 +1,6 @@
 const { Engine, Render, Runner, World, Bodies } = Matter;
 
-const cells = 5; //  means 3/3
+const cells = 3; //  means 3/3
 const width = 600;
 const height = 600;
 
@@ -41,4 +41,26 @@ const horizontals = Array(cells - 1)
   .fill(null)
   .map(() => Array(cells).fill(false));
 
-console.log(horizontals);
+const startRow = Math.floor(Math.random() * cells);
+const startColumn = Math.floor(Math.random() * cells);
+
+const stepThroughCell = (row, column) => {
+  // if I have visited the cell at [row,column], then return
+  if (grid[row][column]) {
+    return;
+  }
+
+  // Mark this cell as being visited
+  grid[row][column] = true;
+
+  // Assemble randomly-ordered list of neighbors
+  const neighbors = [
+    [row - 1, column],
+    [row, column + 1],
+    [row + 1, column],
+    [row, column - 1],
+  ];
+};
+
+stepThroughCell(startRow, startColumn);
+console.log(grid);
