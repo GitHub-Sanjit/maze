@@ -1,4 +1,4 @@
-const { Engine, Render, Runner, World, Bodies } = Matter;
+const { Engine, Render, Runner, World, Bodies, Body } = Matter;
 
 const cells = 3; //  means 3/3
 const width = 600;
@@ -170,19 +170,21 @@ const ball = Bodies.circle(unitLength / 2, unitLength / 2, unitLength / 4);
 World.add(world, ball);
 
 document.addEventListener("keydown", (event) => {
+  const { x, y } = ball.velocity;
+  console.log(x, y);
   if (event.keyCode === 87) {
-    console.log('Move ball up');
+    Body.setVelocity(ball, { x, y: y - 5 });
   }
 
   if (event.keyCode === 68) {
-    console.log('Move ball right');
+    Body.setVelocity(ball, { x: x + 5, y });
   }
 
   if (event.keyCode === 83) {
-    console.log('Move ball down');
+    Body.setVelocity(ball, { x, y: y + 5 });
   }
 
   if (event.keyCode === 65) {
-    console.log('Move ball left');
+    Body.setVelocity(ball, { x: x - 5, y });
   }
 });
