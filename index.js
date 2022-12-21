@@ -1,12 +1,13 @@
 const { Engine, Render, Runner, World, Bodies, Body } = Matter;
 
-const cells = 3; //  means 3/3
+const cells = 8; //  means 3/3
 const width = 600;
 const height = 600;
 
 const unitLength = width / cells;
 
 const engine = Engine.create();
+engine.world.gravity.y = 0;
 const { world } = engine;
 const render = Render.create({
   element: document.body,
